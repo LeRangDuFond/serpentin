@@ -9,7 +9,7 @@ before_install:
   - git clone https://github.com/LeRangDuFond/lille-game-framework.git
   - cd lille-game-framework
   - mvn install
-  - cd..
+  - cd ..
 
 # Cache the Maven directory (faster builds)
 cache:
