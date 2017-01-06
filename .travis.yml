@@ -8,7 +8,7 @@ sudo: false
 before_install:
   - git clone https://github.com/LeRangDuFond/lille-game-framework.git
   - cd lille-game-framework
-  - mvn install
+  - mvn install -DgeneratePom=true
   - cd ..
 
 # Cache the Maven directory (faster builds)
@@ -27,3 +27,6 @@ jdk:
 # No notifications by e-mail (because it's annoying)
 notifications:
   email: false
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/b15b62bf7af227c21890
