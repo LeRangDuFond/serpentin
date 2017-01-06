@@ -1,0 +1,16 @@
+language: java
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.m2
+
+os:
+  - linux
+
+jdk:
+  - openjdk7
+
+notifications:
+  email: false
