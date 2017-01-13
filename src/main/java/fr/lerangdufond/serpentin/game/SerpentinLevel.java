@@ -20,6 +20,6 @@ public class SerpentinLevel extends GameLevelDefaultImpl {
 	@Override
 	protected void init() {
 		this.gameBoard = new GameUniverseViewPortDefaultImpl(data);
-		this.gameBoard.setBackgroundImage("/images/background_full_size.jpg");
+		this.gameBoard.setBackgroundImage("/images/background.png");
 	}
 }
