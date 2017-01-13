@@ -1,25 +1,21 @@
 package fr.lerangdufond.serpentin;
 
-import gameframework.drawing.GameCanvas;
-import gameframework.drawing.GameCanvasDefaultImpl;
-import gameframework.game.Game;
-import gameframework.game.GameConfiguration;
+import fr.lerangdufond.serpentin.game.SerpentinLevel;
 import gameframework.game.GameData;
-import gameframework.gui.GameWindow;
+import gameframework.game.GameDefaultImpl;
 
 /**
- * The Serpentin class is the principal class of the game.
- * */
-public class Serpentin implements Game{
-
-	@Override
-	public void start() {
-		GameConfiguration gc = new GameConfiguration(20,30,40,50);
-		String gameName = "Serpentin";
-		GameCanvas gameCanvas = new GameCanvasDefaultImpl();
-		GameData data = new GameData(gc);
-		GameWindow window = new GameWindow(gameName, gameCanvas, data);
-		window.createGUI();
+ * Main class for the Serpentin.
+ *
+ * @author Joel Troch - Robin Bossart - Francois Masson
+ */
+public class Serpentin extends GameDefaultImpl {
+	/**
+	 * Create a default Serpentin game with the default level.
+	 * @param data The game data to use (the framework's default one should do).
+	 */
+	public Serpentin(GameData data) {
+		super(data);
+		this.data.addLevel(new SerpentinLevel(data));
 	}
-
 }

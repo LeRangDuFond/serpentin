@@ -1,6 +1,8 @@
 package fr.lerangdufond.serpentin;
 
-import gameframework.game.Game;
+import fr.lerangdufond.serpentin.game.SerpentinConfiguration;
+import gameframework.game.GameData;
+import gameframework.gui.GameWindow;
 
 /**
  * Main class for the Serpentin.
@@ -13,8 +15,11 @@ public class Main {
 	 * @param args Command line arguments.
 	 */
 	public static void main(String[] args) {
-		Game serpentin = new Serpentin();
-		serpentin.start();
+		SerpentinConfiguration gameConfig = new SerpentinConfiguration();
+		GameData gameData = new GameData(gameConfig);
+		Serpentin game = new Serpentin(gameData);
+		GameWindow window = new GameWindow("Serpentin", gameData.getCanvas(), gameData);
+		window.createGUI();
+		game.start();
 	}
-
 }
