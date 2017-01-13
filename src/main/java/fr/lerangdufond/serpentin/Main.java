@@ -1,7 +1,9 @@
 package fr.lerangdufond.serpentin;
 
 import fr.lerangdufond.serpentin.game.SerpentinConfiguration;
+import fr.lerangdufond.serpentin.game.SerpentinLevel;
 import gameframework.game.GameData;
+import gameframework.game.GameDefaultImpl;
 import gameframework.gui.GameWindow;
 
 /**
@@ -17,7 +19,8 @@ public class Main {
 	public static void main(String[] args) {
 		SerpentinConfiguration gameConfig = new SerpentinConfiguration();
 		GameData gameData = new GameData(gameConfig);
-		Serpentin game = new Serpentin(gameData);
+		gameData.addLevel(new SerpentinLevel(gameData));
+		GameDefaultImpl game = new GameDefaultImpl(gameData);
 		GameWindow window = new GameWindow("Serpentin", gameData.getCanvas(), gameData);
 		window.createGUI();
 		game.start();
