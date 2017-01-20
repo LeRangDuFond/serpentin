@@ -1,5 +1,6 @@
 package fr.lerangdufond.serpentin.game;
 
+import fr.lerangdufond.serpentin.game.entities.SerpentinEntityPlayer;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
@@ -21,5 +22,6 @@ public class SerpentinLevel extends GameLevelDefaultImpl {
 	protected void init() {
 		this.gameBoard = new GameUniverseViewPortDefaultImpl(data);
 		this.gameBoard.setBackgroundImage("/images/background.png");
+		this.universe.addGameEntity(new SerpentinEntityPlayer(this.data));
 	}
 }
