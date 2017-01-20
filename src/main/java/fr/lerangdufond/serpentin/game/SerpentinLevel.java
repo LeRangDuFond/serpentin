@@ -1,5 +1,6 @@
 package fr.lerangdufond.serpentin.game;
 
+import fr.lerangdufond.serpentin.game.entities.SerpentinEntityBall;
 import fr.lerangdufond.serpentin.game.entities.SerpentinEntityPlayer;
 import fr.lerangdufond.serpentin.game.entities.SerpentinEntityWall;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
@@ -30,8 +31,15 @@ public class SerpentinLevel extends GameLevelDefaultImpl {
 		this.universe.addGameEntity(new SerpentinEntityPlayer(this.data));
 
 		this.buildWalls();
+		this.buildBalls();
 	}
 
+
+	private void buildBalls() {
+		while (true){
+			this.universe.addGameEntity(new SerpentinEntityBall(this.data));
+		}
+	}
 	/**
 	 * Build the walls in the level.
 	 */
