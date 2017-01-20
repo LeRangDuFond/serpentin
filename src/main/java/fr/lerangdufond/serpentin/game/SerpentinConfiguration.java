@@ -12,7 +12,7 @@ public class SerpentinConfiguration extends GameConfiguration {
 	 * Create the Serpentin's configuration.
 	 */
 	public SerpentinConfiguration() {
-		super(30, 30, 16, 1);
+		super(20, 30, 32, 1);
 	}
 
 }
