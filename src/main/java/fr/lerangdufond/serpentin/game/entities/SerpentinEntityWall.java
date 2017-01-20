@@ -22,6 +22,8 @@ public class SerpentinEntityWall implements Drawable, GameEntity, MoveBlocker {
 	private GameCanvas canvas;
 	/** Position of the wall. */
 	private Point position;
+	/** Size of the wall */
+	private int size;
 
 	/**
 	 * Build a new wall.
@@ -33,6 +35,7 @@ public class SerpentinEntityWall implements Drawable, GameEntity, MoveBlocker {
 		this.canvas = data.getCanvas();
 		this.image = new DrawableImage("/images/wall.png", this.canvas);
 		this.position = new Point(x, y);
+		this.size = data.getConfiguration().getSpriteSize();
 	}
 
 	@Override
@@ -47,7 +50,7 @@ public class SerpentinEntityWall implements Drawable, GameEntity, MoveBlocker {
 
 	@Override
 	public Rectangle getBoundingBox() {
-		Rectangle rect = new Rectangle(16, 16);
+		Rectangle rect = new Rectangle(this.size, this.size);
 		rect.setLocation(this.position.x, this.position.y);
 		return rect;
 	}
