@@ -1,5 +1,6 @@
 package fr.lerangdufond.serpentin.game;
 
+import fr.lerangdufond.serpentin.game.entities.SerpentinEntityWall;
 import gameframework.drawing.GameUniverseViewPortDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
@@ -17,9 +18,39 @@ public class SerpentinLevel extends GameLevelDefaultImpl {
 		super(data);
 	}
 
+	private int getCellIndex(int i) {
+		return i * this.spriteSize;
+	}
+
 	@Override
 	protected void init() {
 		this.gameBoard = new GameUniverseViewPortDefaultImpl(data);
 		this.gameBoard.setBackgroundImage("/images/background.png");
+
+		this.buildWalls();
+	}
+
+	/**
+	 * Build the walls in the level.
+	 */
+	private void buildWalls() {
+		int rows = this.data.getConfiguration().getNbRows() - 1;
+		int cols = this.data.getConfiguration().getNbColumns();
+
+		// Build the top and bottom walls
+		int i = 0;
+		while (i < cols) {
+			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellIndex(i), this.getCellIndex(0)));
+			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellIndex(i), this.getCellIndex(rows)));
+			i++;
+		}
+
+		// Build the left and right walls
+		i = 1;
+		while (i < rows) {
+			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellIndex(0), this.getCellIndex(i)));
+			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellIndex(cols - 1), this.getCellIndex(i)));
+			i++;
+		}
 	}
 }
