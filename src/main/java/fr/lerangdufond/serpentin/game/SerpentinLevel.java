@@ -36,9 +36,8 @@ public class SerpentinLevel extends GameLevelDefaultImpl {
 
 
 	private void buildBalls() {
-		while (true){
+
 			this.universe.addGameEntity(new SerpentinEntityBall(this.data));
-		}
 	}
 	/**
 	 * Build the walls in the level.

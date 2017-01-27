@@ -35,14 +35,14 @@ Overlappable, GameEntity, Drawable {
 	    this.canvas = pdata.getCanvas();
 	    this.spriteSize = pdata.getConfiguration().getSpriteSize();
 
-        DrawableImage img = new DrawableImage("mages/fruit.png", canvas);
+        DrawableImage img = new DrawableImage("/images/fruit.png", canvas);
         this.spriteManager =new SpriteManagerDefaultImpl(img, this.spriteSize, 1);
         this.setRandomPosition();
 
     }
 
     private void setRandomPosition(){
-	    this.setPosition(new Point(random.nextInt(this.data.getConfiguration().getNbColumns()-3)+1,random.nextInt(this.data.getConfiguration().getNbRows()-3)+1));
+	    this.position = new Point(100,100);//random.nextInt(this.data.getConfiguration().getNbColumns()-3)+1,random.nextInt(this.data.getConfiguration().getNbRows()-3)+1);
     }
 
 	@Override
