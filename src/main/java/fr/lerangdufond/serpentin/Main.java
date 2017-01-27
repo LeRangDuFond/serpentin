@@ -2,6 +2,7 @@ package fr.lerangdufond.serpentin;
 
 import fr.lerangdufond.serpentin.game.SerpentinConfiguration;
 import fr.lerangdufond.serpentin.game.SerpentinLevel;
+import fr.lerangdufond.serpentin.gui.SerpentinWindow;
 import gameframework.game.GameData;
 import gameframework.game.GameDefaultImpl;
 import gameframework.gui.GameStatusBarElement;
@@ -24,11 +25,8 @@ public class Main {
 		gameData.addLevel(new SerpentinLevel(gameData));
 		GameDefaultImpl game = new GameDefaultImpl(gameData);
 
-		// Status bar
-		GameStatusBarElement<Integer> gameScoreBar = new GameStatusBarElement<>("Score : ", gameData.getScore());
-
 		// Create the window and start the game
-		GameWindow window = new GameWindow("Serpentin", gameData.getCanvas(), gameConfig, gameScoreBar);
+		SerpentinWindow window = new SerpentinWindow("Serpentin", gameData.getCanvas(), gameConfig, gameData);
 		window.createGUI();
 		game.start();
 	}
