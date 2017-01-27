@@ -5,6 +5,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -28,10 +29,14 @@ Overlappable, GameEntity, Drawable, KeyListener{
 	protected int spriteSize;
 	protected GameData data;
 	protected Point direction;
+	protected ArrayList<SerpentinEntityPieceOfTail> lTail;
+	protected GameEntity tail;
 	
 	public SerpentinEntityPlayer(GameData data){
 		this.canvas = data.getCanvas();
 		this.data = data;
+		this.tail = this;
+		this.lTail = new ArrayList<SerpentinEntityPieceOfTail>();
 		this.canvas = data.getCanvas();
 		this.spriteSize = data.getConfiguration().getSpriteSize();
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(
@@ -93,5 +98,8 @@ Overlappable, GameEntity, Drawable, KeyListener{
 		// TODO Auto-generated method stub
 		
 	}
-	
+
+	public void addTail(){
+        //Ajout 
+	}
 }
