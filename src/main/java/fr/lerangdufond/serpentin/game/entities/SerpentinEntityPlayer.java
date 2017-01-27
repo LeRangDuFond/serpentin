@@ -18,7 +18,6 @@ import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
 import gameframework.motion.GameMovableDriverDefaultImpl;
 import gameframework.motion.MoveStrategyKeyboard;
-import gameframework.motion.MoveStrategyKeyboard8Dir;
 import gameframework.motion.overlapping.Overlappable;
 
 public class SerpentinEntityPlayer extends GameMovable implements Observer,
@@ -36,11 +35,11 @@ Overlappable, GameEntity, Drawable, KeyListener{
 		this.canvas = data.getCanvas();
 		this.spriteSize = data.getConfiguration().getSpriteSize();
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(
-				"/images/head.png", canvas), this.spriteSize, 3);
+				"/images/head.png", canvas), this.spriteSize, 1);
 		this.direction = new Point(0, 1);
-		this.setPosition(new Point(0, 0));
+		this.setPosition(new Point(this.data.getCanvas().getWidth()/2, this.data.getCanvas().getHeight()/2));
 		
-		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard8Dir();
+		MoveStrategyKeyboard keyboard = new MoveStrategyKeyboard();
 		GameMovableDriverDefaultImpl moveDriver = new GameMovableDriverDefaultImpl();
 
 		moveDriver.setStrategy(keyboard);
