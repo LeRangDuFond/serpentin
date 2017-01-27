@@ -22,7 +22,6 @@ public class SerpentinMoveStrategyConfigurableKeyboard extends MoveStrategyConfi
 		for (Integer keyCode : keyPressed) {
 			final Point keyDirection = directions.get(keyCode);
 			if (keyDirection != null) {
-				System.out.println("x"+keyDirection.x+"y"+keyDirection.y);
 				/*Check if player is trying to return back.*/
 				/*Check if it is not the first move.*/
 				if((this.prevDirection.x + this.prevDirection.y) != 0){
