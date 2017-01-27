@@ -34,7 +34,7 @@ Overlappable, GameEntity, Drawable {
 		this.data = pdata;
 	    this.canvas = pdata.getCanvas();
 	    this.spriteSize = pdata.getConfiguration().getSpriteSize();
-        this.point = 50;
+        this.point = 1;
         DrawableImage img = new DrawableImage("/images/fruit.png", canvas);
         this.spriteManager =new SpriteManagerDefaultImpl(img, this.spriteSize, 1);
         this.setRandomPosition();
