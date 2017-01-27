@@ -1,6 +1,7 @@
 package fr.lerangdufond.serpentin.game;
 
 import gameframework.game.GameConfiguration;
+import gameframework.motion.overlapping.OverlapRulesApplier;
 
 /**
  * Configuration class for the Serpentin.
@@ -14,5 +15,13 @@ public class SerpentinConfiguration extends GameConfiguration {
 	public SerpentinConfiguration() {
 		super(20, 30, 32, 1);
 	}
+
+
+	/*
+	 * (non-Javadoc)
+	 * @see gameframework.game.GameConfiguration#createOverlapRulesApplier()
+	 */
+	@Override
+	public OverlapRulesApplier createOverlapRulesApplier() { return new SerpentinOverlapRules();}
 
 }

@@ -31,12 +31,13 @@ public class SerpentinLevel extends GameLevelDefaultImpl {
 		this.universe.addGameEntity(new SerpentinEntityPlayer(this.data));
 
 		this.buildWalls();
-		this.buildBalls();
+		this.spawnBalls();
 	}
 
-
-	private void buildBalls() {
-
+	/**
+	 * Spawn the first ball in the game.
+	 */
+	private void spawnBalls() {
 			this.universe.addGameEntity(new SerpentinEntityBall(this.data));
 	}
 	/**
