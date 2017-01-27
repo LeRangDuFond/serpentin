@@ -8,6 +8,11 @@ import java.util.Observable;
 import java.util.Observer;
 
 import gameframework.drawing.Drawable;
+import gameframework.drawing.DrawableImage;
+import gameframework.drawing.GameCanvas;
+import gameframework.drawing.SpriteManager;
+import gameframework.drawing.SpriteManagerDefaultImpl;
+import gameframework.game.GameData;
 import gameframework.game.GameEntity;
 import gameframework.motion.GameMovable;
 import gameframework.motion.overlapping.Overlappable;
@@ -15,10 +20,24 @@ import gameframework.motion.overlapping.Overlappable;
 public class SerpentinEntityPieceOfTail extends GameMovable implements Observer,
 Overlappable, GameEntity, Drawable, KeyListener{
 
+	private GameMovable prevEntity;
+	private SpriteManager spriteManager;
+	private GameCanvas canvas;
+	private int spriteSize;
+	
+	public SerpentinEntityPieceOfTail(GameData data, GameMovable prevEntity){
+		this.prevEntity = prevEntity;
+		this.canvas = data.getCanvas();
+		this.canvas = data.getCanvas();
+		this.spriteSize = data.getConfiguration().getSpriteSize();
+		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(
+				"/images/tail.png", canvas), this.spriteSize, 1);
+		this.setPosition(this.prevEntity.getPosition());
+	}
+	
 	@Override
 	public Rectangle getBoundingBox() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Rectangle(32,32);
 	}
 
 	@Override
@@ -41,8 +60,7 @@ Overlappable, GameEntity, Drawable, KeyListener{
 
 	@Override
 	public void draw(Graphics g) {
-		// TODO Auto-generated method stub
-		
+		this.spriteManager.draw(g, this.position);
 	}
 
 	@Override
