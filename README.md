@@ -16,12 +16,12 @@ A Snake game powered by the Lille game framework.
 
 Start by cloning this repository, the "Lille Game Framework" is added as a sub-module so you will have to use this command:
 
-`git clone --recursive git://github.com/LeRangDuFond/serpentin.git`.
+`git clone --recursive git://github.com:LeRangDuFond/serpentin.git`.
 
 If you have already cloned this repository or the command above isn't working:
 
 ```
-git clone git://github.com/LeRangDuFond/serpentin.git
+git clone git://github.com:LeRangDuFond/serpentin.git
 cd serpentin
 git submodule update --init --recursive
 ```
