@@ -9,6 +9,6 @@
 
   <modules>
     <module>lille-game-framework</module>
-    <module>serpentin</module>
+    <module>serpentin-game</module>
   </modules>
 </project>
