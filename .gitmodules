@@ -1,0 +1,3 @@
+[submodule "lille-game-framework"]
+	path = lille-game-framework
+	url = git@github.com:LeRangDuFond/lille-game-framework.git
