@@ -5,8 +5,6 @@ import fr.lerangdufond.serpentin.game.SerpentinLevel;
 import fr.lerangdufond.serpentin.gui.SerpentinWindow;
 import gameframework.game.GameData;
 import gameframework.game.GameDefaultImpl;
-import gameframework.gui.GameStatusBarElement;
-import gameframework.gui.GameWindow;
 
 /**
  * Main class for the Serpentin.
