@@ -36,7 +36,7 @@ Overlappable, GameEntity, Drawable, KeyListener{
 		this.canvas = data.getCanvas();
 		this.data = data;
 		this.tail = this;
-		this.lTail = new ArrayList<SerpentinEntityPieceOfTail>();
+		this.lTail = new ArrayList<>();
 		this.canvas = data.getCanvas();
 		this.spriteSize = data.getConfiguration().getSpriteSize();
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(
