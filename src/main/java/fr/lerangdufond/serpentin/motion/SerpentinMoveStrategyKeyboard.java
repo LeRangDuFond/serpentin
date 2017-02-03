@@ -35,7 +35,7 @@ public class SerpentinMoveStrategyKeyboard extends SerpentinMoveStrategyConfigur
 	 * See {@link MoveStrategyConfigurableKeyboard#MoveStrategyConfigurableKeyboard(Boolean)}
 	 */
 	private SerpentinMoveStrategyKeyboard(Boolean alwaysMove) {
-		this(alwaysMove, new SpeedVector(new Point(1, 0), 16));
+		this(alwaysMove, new SpeedVector(new Point(1, 0), 32));
 	}
 
 	/**

@@ -20,7 +20,7 @@ public class SerpentinLevel extends GameLevelDefaultImpl {
 	 * @param data The game to use (the framework's default should do).
 	 */
 	public SerpentinLevel(GameData data) {
-		super(data);
+		super(data, 100);
 	}
 
 	/**
