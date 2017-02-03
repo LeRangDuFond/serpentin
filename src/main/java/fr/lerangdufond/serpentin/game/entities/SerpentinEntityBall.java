@@ -51,6 +51,14 @@ Overlappable, GameEntity, Drawable {
 	    this.position = new Point(x, y);
     }
 
+    /**
+     * Return the position of the ball.
+     * @return the ball position.
+     * */
+    public Point getPosition(){
+    	return this.position;
+    }
+    
 	@Override
 	public Rectangle getBoundingBox(){
         Rectangle rectangle = new Rectangle(this.spriteSize, this.spriteSize);
