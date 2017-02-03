@@ -22,7 +22,6 @@ import java.awt.event.WindowEvent;
  * @author Joel Troch - Robin Bossart - Francois Masson
  */
 public class SerpentinWindow {
-
 	/** The window's frame. */
 	private final Frame frame;
 	/** The game's canvas. */
@@ -66,5 +65,4 @@ public class SerpentinWindow {
 			}
 		});
 	}
-
 }

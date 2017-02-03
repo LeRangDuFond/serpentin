@@ -12,21 +12,22 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 /**
- * Wall entity for Serpentin.
+ * The wall entity for the Serpentin.
+ *
  * @author Joel Troch - Robin Bossart - Francois Masson
  */
 public class SerpentinEntityWall implements Drawable, GameEntity, MoveBlocker {
 	/** Image of the wall. */
-	private DrawableImage image;
+	private final DrawableImage image;
 	/** The game canvas to draw on. */
-	private GameCanvas canvas;
+	private final GameCanvas canvas;
 	/** Position of the wall. */
-	private Point position;
+	private final Point position;
 	/** Size of the wall */
-	private int size;
+	private final int size;
 
 	/**
-	 * Build a new wall.
+	 * Build a new wall for a specific game data at a specific position.
 	 * @param data The game data to register this wall in.
 	 * @param x The X position of the wall.
 	 * @param y The Y position of the wall.

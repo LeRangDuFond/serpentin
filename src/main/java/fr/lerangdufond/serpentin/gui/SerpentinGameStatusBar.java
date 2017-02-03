@@ -12,10 +12,10 @@ import java.awt.Label;
  * Serpentin's version of "GameStatusBar".
  *
  * Used to fix an issue where if the score was higher than 9 (like "Score : 10"), the last digit would be half cut.
+ *
  * @author Joel Troch - Robin Bossart - Francois Masson
  */
-public class SerpentinGameStatusBar extends GameStatusBar {
-
+class SerpentinGameStatusBar extends GameStatusBar {
 	@Override
 	public Container getContainer() {
 		JPanel container = new JPanel();
@@ -31,5 +31,4 @@ public class SerpentinGameStatusBar extends GameStatusBar {
 		super.update();
 		return container;
 	}
-
 }

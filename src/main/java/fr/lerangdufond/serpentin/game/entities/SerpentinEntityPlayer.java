@@ -5,10 +5,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Observable;
-import java.util.Observer;
 
-import fr.lerangdufond.serpentin.game.utils.SerpentinMoveStrategyKeyboard;
+import fr.lerangdufond.serpentin.motion.SerpentinMoveStrategyKeyboard;
 import gameframework.drawing.Drawable;
 import gameframework.drawing.DrawableImage;
 import gameframework.drawing.GameCanvas;
@@ -20,63 +18,46 @@ import gameframework.motion.GameMovable;
 import gameframework.motion.GameMovableDriverDefaultImpl;
 import gameframework.motion.overlapping.Overlappable;
 
-public class SerpentinEntityPlayer extends GameMovable implements Observer,
-Overlappable, GameEntity, Drawable, KeyListener{
-	
-	protected SpriteManager spriteManager;
-	protected GameCanvas canvas;
-	protected int spriteSize;
-	protected GameData data;
-	protected Point direction;
-	protected GameEntity tail;
-	
-	public SerpentinEntityPlayer(GameData data){
-		this.canvas = data.getCanvas();
+/**
+ * The player entity for the Serpentin.
+ *
+ * Implements all the interface required for player control, movement and physics.
+ *
+ * @author Joel Troch - Robin Bossart - Francois Masson
+ */
+public class SerpentinEntityPlayer extends GameMovable implements Drawable, GameEntity, KeyListener, Overlappable {
+	/** The game data's to gather some information from. */
+	private final GameData data;
+	/** The sprite manager used by this player. */
+	private final SpriteManager spriteManager;
+
+	/**
+	 * Create a player entity for a specific game data.
+	 * @param data The game data to use.
+	 */
+	public SerpentinEntityPlayer(GameData data) {
+		// Draw the player
 		this.data = data;
-		this.tail = this;
-		this.canvas = data.getCanvas();
-		this.spriteSize = data.getConfiguration().getSpriteSize();
-		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(
-				"/images/head.png", canvas), this.spriteSize, 1);
-		this.direction = new Point(0, 1);
-		this.setPosition(new Point(this.data.getCanvas().getWidth()/2, this.data.getCanvas().getHeight()/2));
-		
+		GameCanvas canvas = this.data.getCanvas();
+		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage("/images/head.png", canvas),
+				data.getConfiguration().getSpriteSize(), 1);
+		this.setPosition(new Point(canvas.getWidth() / 2, canvas.getHeight() / 2));
+
+		// Assign it's controls
 		SerpentinMoveStrategyKeyboard keyboard = new SerpentinMoveStrategyKeyboard();
 		GameMovableDriverDefaultImpl moveDriver = new GameMovableDriverDefaultImpl();
 
 		moveDriver.setStrategy(keyboard);
-		moveDriver.setmoveBlockerChecker(data.getMoveBlockerChecker());
+		moveDriver.setmoveBlockerChecker(this.data.getMoveBlockerChecker());
 
-		data.getCanvas().addKeyListener(keyboard);
-		setDriver(moveDriver);
-
-		data.getCanvas().addKeyListener(this);
+		canvas.addKeyListener(keyboard);
+		this.setDriver(moveDriver);
+		canvas.addKeyListener(this);
 	}
 
 	@Override
 	public Rectangle getBoundingBox() {
-		return new Rectangle(32,32);
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		System.out.println(e.getKeyChar());
-	}
-
-	/**
-	 * Not used here.
-	 * */
-	@Override
-	public void keyPressed(KeyEvent e) {
-		
-	}
-
-	/**
-	 * Not used here.
-	 * */
-	@Override
-	public void keyReleased(KeyEvent e) {
-		
+		return new Rectangle(this.data.getConfiguration().getSpriteSize(), this.data.getConfiguration().getSpriteSize());
 	}
 
 	@Override
@@ -85,15 +66,22 @@ Overlappable, GameEntity, Drawable, KeyListener{
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+	public void keyTyped(KeyEvent keyEvent) {
+		// TODO: Unused (yet)
+	}
+
+	@Override
+	public void keyPressed(KeyEvent keyEvent) {
+		// TODO: Unused (yet)
+	}
+
+	@Override
+	public void keyReleased(KeyEvent keyEvent) {
+		// TODO: Unused (yet)
 	}
 
 	@Override
 	public void oneStepMoveAddedBehavior() {
-		// TODO Auto-generated method stub
-		
+		// TODO: Unused (yet)
 	}
-
 }

@@ -10,87 +10,77 @@ import gameframework.motion.overlapping.Overlappable;
 import java.util.Random;
 
 /**
- * This class is used to create the entity who is the ball eaten by the player,
- * and all the method needed to be place randomly.
+ * The ball entity for the Serpentin.
+ *
+ * This is the entity "eaten" by the player to increase it's score, each time that entity is eaten, it move elsewhere.
+ *
+ * @author Joel Troch - Robin Bossart - Francois Masson
  */
-public class SerpentinEntityBall extends GameMovable implements
-Overlappable, GameEntity, Drawable {
+public class SerpentinEntityBall extends GameMovable implements Drawable, GameEntity, Overlappable {
+	/** The sprite manager used by this ball to be drawn. */
+	private final SpriteManager spriteManager;
+	/** The game data to impact. */
+	private final GameData data;
+	/** Amount of points given by eating this ball. */
+	private final int points;
+	/** Random class used by all balls to generate their new position. */
+	private static final Random random = new Random();
 
-	protected GameCanvas canvas;
-	protected SpriteManager spriteManager;
-	protected int spriteSize;
-	protected GameData data;
-	protected int point;
+	/**
+	 * Create a ball entity with a specific game data to impact.
+	 * @param data The game data to impact on.
+	 */
+	public SerpentinEntityBall(GameData data) {
+		super();
+		this.data = data;
+		this.points = 1;
 
-	static Random random = new Random();
+		DrawableImage img = new DrawableImage("/images/fruit.png", this.data.getCanvas());
+		this.spriteManager = new SpriteManagerDefaultImpl(img, this.data.getConfiguration().getSpriteSize(), 1);
+		this.setRandomPosition();
+	}
 
-    /**
-     * Create the ball entity
-     * @param pdata
-     *      Data of our game
-     */
-	public SerpentinEntityBall(GameData pdata){
-	    super();
-		this.data = pdata;
-	    this.canvas = pdata.getCanvas();
-	    this.spriteSize = pdata.getConfiguration().getSpriteSize();
-        this.point = 1;
-        DrawableImage img = new DrawableImage("/images/fruit.png", canvas);
-        this.spriteManager =new SpriteManagerDefaultImpl(img, this.spriteSize, 1);
-        this.setRandomPosition();
+	/**
+	 * Set the position of this ball to a random place without being outside the level and inside a wall of course.
+	 */
+	private void setRandomPosition() {
+		int x = (random.nextInt(this.data.getConfiguration().getNbColumns() - 3) + 1) * this.data.getConfiguration().getSpriteSize();
+		int y = (random.nextInt(this.data.getConfiguration().getNbRows() - 3) + 1) * this.data.getConfiguration().getSpriteSize();
+		this.position = new Point(x, y);
+	}
 
-    }
+	/**
+	 * Return the position of this ball.
+	 * @return This ball's position.
+	 */
+	public Point getPosition(){
+		return this.position;
+	}
 
-    /**
-     * Set the position of this entity to a random place who aren't a wall and/or
-     * outside our game
-     */
-    private void setRandomPosition(){
-		int x = (random.nextInt(this.data.getConfiguration().getNbColumns()-3)+1) * this.data.getConfiguration().getSpriteSize();
-		int y = (random.nextInt(this.data.getConfiguration().getNbRows()-3)+1) * this.data.getConfiguration().getSpriteSize();
-	    this.position = new Point(x, y);
-    }
-
-    /**
-     * Return the position of the ball.
-     * @return the ball position.
-     * */
-    public Point getPosition(){
-    	return this.position;
-    }
-    
 	@Override
-	public Rectangle getBoundingBox(){
-        Rectangle rectangle = new Rectangle(this.spriteSize, this.spriteSize);
-        rectangle.setLocation(position.x * this.spriteSize, position.y * this.spriteSize);
-        return rectangle;
-    }
+	public Rectangle getBoundingBox() {
+		Rectangle rectangle = new Rectangle(this.data.getConfiguration().getSpriteSize(), this.data.getConfiguration().getSpriteSize());
+		rectangle.setLocation(this.position.x * this.data.getConfiguration().getSpriteSize(), this.position.y * this.data.getConfiguration().getSpriteSize());
+		return rectangle;
+	}
 
-    /**
-     * Draw our sprite.
-     * @param g
-     *      The place where the spriteManage will draw our sprite
-     */
 	@Override
 	public void draw(Graphics g) {
 		this.spriteManager.draw(g, position);
 		this.spriteManager.increment();
 	}
 
-    /**
-     * This function define what happen when the player hit the ball
-     * <p>
-     * This function will increase the global score and will change
-     * the position of the ball
-     */
+	/**
+	 * This function is called every time a player hit the ball. It will increase the global score and will change the
+	 * position of the ball.
+	 */
 	public void getHit() {
-	    this.data.getScore().setValue(this.data.getScore().getValue() + this.point);
-	    this.setRandomPosition();
-    }
+		this.data.getScore().setValue(this.data.getScore().getValue() + this.points);
+		this.setRandomPosition();
+	}
 
-    /**
-     * Not use here the ball don't move
-     */
-    @Override
-    public void oneStepMoveAddedBehavior(){}
+	@Override
+	public void oneStepMoveAddedBehavior() {
+		// UNUSED : The ball don't move
+	}
 }

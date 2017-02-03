@@ -8,7 +8,10 @@ import gameframework.game.GameData;
 import gameframework.game.GameLevelDefaultImpl;
 
 /**
- * The Serpentin's level.
+ * The Serpentin's core level.
+ *
+ * Walls around the level, a player, and a first ball.
+ *
  * @author Joel Troch - Robin Bossart - Francois Masson
  */
 public class SerpentinLevel extends GameLevelDefaultImpl {
@@ -20,7 +23,14 @@ public class SerpentinLevel extends GameLevelDefaultImpl {
 		super(data);
 	}
 
-	private int getCellIndex(int i) {
+	/**
+	 * Returns the position of a cell by it's index.
+	 * This is very useful for a game that relies on cells, the size of those cells are determined by the size of the
+	 * sprites (which is defined by the game configuration your game is using).
+	 * @param i The index of the cell you wish to retrieve it's position.
+	 * @return The position of the cell.
+	 */
+	private int getCellPositionByIndex(int i) {
 		return i * this.spriteSize;
 	}
 
@@ -30,36 +40,37 @@ public class SerpentinLevel extends GameLevelDefaultImpl {
 		this.gameBoard.setBackgroundImage("/images/background.png");
 		this.universe.addGameEntity(new SerpentinEntityPlayer(this.data));
 
-		this.buildWalls();
-		this.spawnBalls();
+		this.spawnWalls();
+		this.spawnFirstBall();
 	}
 
 	/**
 	 * Spawn the first ball in the game.
 	 */
-	private void spawnBalls() {
-			this.universe.addGameEntity(new SerpentinEntityBall(this.data));
+	private void spawnFirstBall() {
+		this.universe.addGameEntity(new SerpentinEntityBall(this.data));
 	}
+
 	/**
 	 * Build the walls in the level.
 	 */
-	private void buildWalls() {
+	private void spawnWalls() {
 		int rows = this.data.getConfiguration().getNbRows() - 1;
 		int cols = this.data.getConfiguration().getNbColumns();
 
 		// Build the top and bottom walls
 		int i = 0;
 		while (i < cols) {
-			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellIndex(i), this.getCellIndex(0)));
-			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellIndex(i), this.getCellIndex(rows)));
+			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellPositionByIndex(i), this.getCellPositionByIndex(0)));
+			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellPositionByIndex(i), this.getCellPositionByIndex(rows)));
 			i++;
 		}
 
 		// Build the left and right walls
 		i = 1;
 		while (i < rows) {
-			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellIndex(0), this.getCellIndex(i)));
-			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellIndex(cols - 1), this.getCellIndex(i)));
+			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellPositionByIndex(0), this.getCellPositionByIndex(i)));
+			this.universe.addGameEntity(new SerpentinEntityWall(this.data, this.getCellPositionByIndex(cols - 1), this.getCellPositionByIndex(i)));
 			i++;
 		}
 	}
