@@ -17,6 +17,7 @@ import gameframework.drawing.SpriteManager;
 import gameframework.drawing.SpriteManagerDefaultImpl;
 import gameframework.game.GameData;
 import gameframework.game.GameEntity;
+import gameframework.game.GameUniverse;
 import gameframework.motion.GameMovable;
 import gameframework.motion.GameMovableDriverDefaultImpl;
 import gameframework.motion.overlapping.Overlappable;
@@ -29,14 +30,13 @@ Overlappable, GameEntity, Drawable, KeyListener{
 	protected int spriteSize;
 	protected GameData data;
 	protected Point direction;
-	protected ArrayList<SerpentinEntityPieceOfTail> lTail;
-	protected GameEntity tail;
-	
+	protected GameMovable tail;
+
+
 	public SerpentinEntityPlayer(GameData data){
 		this.canvas = data.getCanvas();
 		this.data = data;
 		this.tail = this;
-		this.lTail = new ArrayList<SerpentinEntityPieceOfTail>();
 		this.canvas = data.getCanvas();
 		this.spriteSize = data.getConfiguration().getSpriteSize();
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(
@@ -100,6 +100,11 @@ Overlappable, GameEntity, Drawable, KeyListener{
 	}
 
 	public void addTail(){
-        //Ajout 
+	    SerpentinEntityPieceOfTail sEPT = new SerpentinEntityPieceOfTail(this.data,this.tail);
+        this.data.getUniverse().addGameEntity(sEPT);
 	}
+
+	public void endOfGame(){
+	    this.data.getEndOfGame().setValue(true);
+    }
 }

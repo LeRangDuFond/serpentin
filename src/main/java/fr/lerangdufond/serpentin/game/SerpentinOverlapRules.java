@@ -1,6 +1,7 @@
 package fr.lerangdufond.serpentin.game;
 
 import fr.lerangdufond.serpentin.game.entities.SerpentinEntityBall;
+import fr.lerangdufond.serpentin.game.entities.SerpentinEntityPieceOfTail;
 import fr.lerangdufond.serpentin.game.entities.SerpentinEntityPlayer;
 import gameframework.motion.overlapping.OverlapRulesApplierDefaultImpl;
 
@@ -18,6 +19,15 @@ public class SerpentinOverlapRules extends OverlapRulesApplierDefaultImpl{
      *      The entity who define the ball
      */
     public void overlapRule(SerpentinEntityPlayer sEP, SerpentinEntityBall sEB){
+        sEP.addTail();
         sEB.getHit();
+    }
+
+    public void overlapRule(SerpentinEntityPlayer sEP, SerpentinEntityPieceOfTail sEPOT){
+        sEP.endOfGame();
+    }
+
+    public void overlapRule(SerpentinEntityBall sEB, SerpentinEntityPieceOfTail sEPOT){
+        sEB.setRandomPosition();
     }
 }

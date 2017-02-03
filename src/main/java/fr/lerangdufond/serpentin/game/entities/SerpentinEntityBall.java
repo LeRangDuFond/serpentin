@@ -45,7 +45,7 @@ Overlappable, GameEntity, Drawable {
      * Set the position of this entity to a random place who aren't a wall and/or
      * outside our game
      */
-    private void setRandomPosition(){
+    public void setRandomPosition(){
 		int x = (random.nextInt(this.data.getConfiguration().getNbColumns()-3)+1) * this.data.getConfiguration().getSpriteSize();
 		int y = (random.nextInt(this.data.getConfiguration().getNbRows()-3)+1) * this.data.getConfiguration().getSpriteSize();
 	    this.position = new Point(x, y);
