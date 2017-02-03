@@ -8,6 +8,8 @@ import gameframework.game.GameDefaultImpl;
 
 /**
  * Main class for the Serpentin.
+ * This class act as the entry point of the application, it instantiate all the "core" elements and start the game
+ * when everything is ready.
  *
  * @author Joel Troch - Robin Bossart - Francois Masson
  */
