@@ -69,14 +69,4 @@ public class SerpentinWindow {
 		});
 	}
 
-	/**
-	 * Add a component to the window.
-	 * @param comp Component to add.
-	 * @param layout Layout to use.
-	 */
-	public void add(Component comp, String layout) {
-		this.frame.add(comp, layout);
-		this.frame.pack();
-	}
-
 }
