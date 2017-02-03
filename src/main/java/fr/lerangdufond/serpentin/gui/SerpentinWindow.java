@@ -32,17 +32,16 @@ public class SerpentinWindow {
 
 	/**
 	 * Create a new Serpentin window.
-	 * @param gameName Name of the frame (generally the name of the game).
 	 * @param gameCanvas Game canvas to use.
 	 * @param gameConfiguration Game configuration to use.
 	 * @param gameData Game data to use.
 	 */
-	public SerpentinWindow(String gameName, GameCanvas gameCanvas, GameConfiguration gameConfiguration, GameData gameData) {
+	public SerpentinWindow(GameCanvas gameCanvas, GameConfiguration gameConfiguration, GameData gameData) {
 		if (gameCanvas == null)
 			throw new IllegalArgumentException("GameCanvas is null!");
 
 		this.statusBar.add(new GameStatusBarElement<>("Score : ", gameData.getScore()));
-		this.frame = new Frame(gameName);
+		this.frame = new Frame("Serpentin");
 		this.gameCanvas = gameCanvas;
 		this.gameCanvas.setSize(gameConfiguration.getSpriteSize() * gameConfiguration.getNbColumns(), gameConfiguration.getSpriteSize() * gameConfiguration.getNbRows());
 	}

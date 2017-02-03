@@ -24,7 +24,7 @@ public class Main {
 		GameDefaultImpl game = new GameDefaultImpl(gameData);
 
 		// Create the window and start the game
-		SerpentinWindow window = new SerpentinWindow("Serpentin", gameData.getCanvas(), gameConfig, gameData);
+		SerpentinWindow window = new SerpentinWindow(gameData.getCanvas(), gameConfig, gameData);
 		window.createGUI();
 		game.start();
 	}
