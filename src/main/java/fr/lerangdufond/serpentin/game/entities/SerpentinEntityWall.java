@@ -47,6 +47,14 @@ public class SerpentinEntityWall implements Drawable, GameEntity, MoveBlocker {
 	public boolean isMovable() {
 		return false;
 	}
+	
+	/**
+	 * Return the position of the wall.
+	 * @return the position of the wall.
+	 * */
+	public Point getPostion(){
+		return this.position;
+	}
 
 	@Override
 	public Rectangle getBoundingBox() {
