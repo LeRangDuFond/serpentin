@@ -29,14 +29,12 @@ Overlappable, GameEntity, Drawable, KeyListener{
 	protected int spriteSize;
 	protected GameData data;
 	protected Point direction;
-	protected ArrayList<SerpentinEntityPieceOfTail> lTail;
 	protected GameEntity tail;
 	
 	public SerpentinEntityPlayer(GameData data){
 		this.canvas = data.getCanvas();
 		this.data = data;
 		this.tail = this;
-		this.lTail = new ArrayList<>();
 		this.canvas = data.getCanvas();
 		this.spriteSize = data.getConfiguration().getSpriteSize();
 		this.spriteManager = new SpriteManagerDefaultImpl(new DrawableImage(
