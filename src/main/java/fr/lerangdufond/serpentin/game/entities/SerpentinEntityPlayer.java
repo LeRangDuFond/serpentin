@@ -99,7 +99,4 @@ Overlappable, GameEntity, Drawable, KeyListener{
 		
 	}
 
-	public void addTail(){
-        //Ajout 
-	}
 }
